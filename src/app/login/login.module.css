@@ -1,0 +1,44 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.main h1 {
+  font-size: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 40rem;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 2px solid #74b9ff;
+  padding: .5rem;
+  background-color: #2f3542;
+  color: white;
+}
+
+.form button:hover {
+  border-bottom: 2px solid #55efc4;
+
+}

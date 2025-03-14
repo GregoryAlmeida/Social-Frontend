@@ -1,0 +1,55 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.section span {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.section span h1 {
+  font-size: 2rem;
+}
+
+.section span button {
+  background-color: #2f3542;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid #74b9ff;
+}
+
+.section span button:hover {
+  border-bottom: 2px solid #55efc4;
+
+}
+
+.section div {
+  min-width: 40rem;
+  height: 50rem;
+  display: flex;
+  flex-direction:column;
+  background-color: #2f3542;
+  padding: .5rem;
+  gap: 2rem;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+
+.section div span {
+  width: 90%;
+  background-color: #1e272e;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
