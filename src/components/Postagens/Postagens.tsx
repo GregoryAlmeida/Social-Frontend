@@ -2,6 +2,8 @@ import { GET_POSTAGENS, Posts } from '@/api/api_user';
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './Postagens.module.css';
 import { Context } from '../Context/Context';
+import Image from 'next/image';
+import DefaultProfile from '../../../public/DefaultProfile.jpg'
 
 export default function Postagens() {
   const [postagens, setPostagens] = useState<Posts[] | null>(null);
@@ -25,8 +27,9 @@ export default function Postagens() {
         {postagens === null ? (
           <p>Carregando...</p>
         ) : (
-          postagens.map(({ Name, Message }) => (
+          postagens.map(({  Name, Message }) => (
             <span key={crypto.randomUUID()}>
+              <Image src={DefaultProfile} width={50} height={50} alt='Profile Pic' />
               <h3 style={{ color: 'cyan' }}>{Name}</h3>
               <p>{Message}</p>
             </span>

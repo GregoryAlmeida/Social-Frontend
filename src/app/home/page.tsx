@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Input from '@/components/Input/Input';
 import Postagens from '@/components/Postagens/Postagens';
 import { Context } from '@/components/Context/Context';
+import { Logout } from '@/actions/Logout';
 
 export default function HomePage() {
   const [userData, setUserData] = useState<User | null>(null);
@@ -48,6 +49,7 @@ export default function HomePage() {
     }
   };
 
+
   return (
     <main className={styles.main}>
       {userData === null ? (
@@ -62,7 +64,7 @@ export default function HomePage() {
               <Link href="/conta">
                 <button>{userData.Name}</button>
               </Link>
-              <button>Logout</button>
+              <button onClick={Logout}>Logout</button>
             </div>
           </header>
           <section className={styles.section}>

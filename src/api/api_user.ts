@@ -9,15 +9,18 @@ export type User = {
   Name:     string
   Email:    string
   Password: string
+  Profile:  string
+  About:    string
 }
 
 export type Posts = {
+  Profile: string
   Name: string
   Message: string
 }
 
-const API_USER = "https://social-backend-5jnh.onrender.com/user/"
-const API_POSTAGENS = "https://social-backend-5jnh.onrender.com/postagens/"
+const API_USER = "http://localhost:9090/user/"//"https://social-backend-5jnh.onrender.com/user/"
+const API_POSTAGENS = "http://localhost:9090/postagens/"//"https://social-backend-5jnh.onrender.com/postagens/"
 
 //API USER
 export const USER_LOGIN = async(email: string, password: string) => {
@@ -38,6 +41,8 @@ export const USER_CADASTRO = async(id: string,username: string, email: string, p
     Name: username,
     Email: email,
     Password: password,
+    Profile: '',
+    About: '',
   })
 
   if (response.data.Message === "OK") {
