@@ -4,9 +4,10 @@ import Link from 'next/link'
 import LOGO from '../../../public/logo-sgo.jpg';
 import { Logout } from '@/actions/Logout';
 import DefaultProfile from '../../../public/DefaultProfile.jpg'
+import { User } from '@/api/api_user';
 
 
-export default function Header(name: {name: string}) {
+export default function Header(user: {user: User}) {
     return           <header className={styles.header}>
     <div>
       <Link href='/home'>
@@ -15,8 +16,8 @@ export default function Header(name: {name: string}) {
     </div>
     <div>
       <Link href="/conta">
-        <Image src={DefaultProfile} width={50} height={50} alt='Profile Pic' />
-        <button>{name.name}</button>
+        <Image src={user.user.Profile === "" ? DefaultProfile : user.user.Profile} width={50} height={50} alt='Profile Pic' />
+        <button>{user.user.Name}</button>
       </Link>
       <button onClick={Logout}>Logout</button>
     </div>

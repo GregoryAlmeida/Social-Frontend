@@ -38,7 +38,7 @@ export default function HomePage() {
 
     try {
       if (typeof userData?.Name != 'string') return;
-      await POST_POSTAGENS(userData.Name, post);
+      await POST_POSTAGENS(userData.Name, post, userData.Profile);
       setErr('');
       setPost('');
       context.setState((b) => !b);
@@ -54,7 +54,7 @@ export default function HomePage() {
         <div style={{minHeight: '80vh', display: 'flex'}}><RandomLoading /></div>
       ) : (
         <>
-        <Header name={userData.Name} />
+        <Header user={userData} />
           <section className={styles.section}>
             <h1>Bem vindo {userData.Name}</h1>
             <div className={styles.post}>

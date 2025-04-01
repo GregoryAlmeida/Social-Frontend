@@ -78,7 +78,7 @@ export default function ContaPage() {
                 </div>
                 : 
                 <section className={styles.section}>
-                    <Header name={user.Name} />
+                    <Header user={user} />
                     <span style={{display: display}}>
                         {route != 'Profile' ? <Input 
                             onChange={({target}) => setValue(target.value)} 

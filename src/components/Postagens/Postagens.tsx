@@ -4,6 +4,7 @@ import styles from './Postagens.module.css';
 import { Context } from '../Context/Context';
 import Image from 'next/image';
 import DefaultProfile from '../../../public/DefaultProfile.jpg'
+import RandomLoading from '../RandomLoading/RandomLoading';
 
 export default function Postagens() {
   const [postagens, setPostagens] = useState<Posts[] | null>(null);
@@ -17,6 +18,8 @@ export default function Postagens() {
     handlePostagens();
   }, [context.state]);
 
+  console.log(postagens)
+
   return (
     <section className={styles.section}>
       <span>
@@ -25,12 +28,18 @@ export default function Postagens() {
       </span>
       <div>
         {postagens === null ? (
-          <p>Carregando...</p>
+          <div style={{margin: 'auto'}}><RandomLoading /></div>
         ) : (
-          postagens.map(({  Name, Message }) => (
+          postagens.map(({ Name, Message, Profile }) => (
             <span key={crypto.randomUUID()}>
-              <Image src={DefaultProfile} width={50} height={50} alt='Profile Pic' />
-              <h3 style={{ color: 'cyan' }}>{Name}</h3>
+            <Image 
+              style={{borderRadius: '5px'}} 
+              src={Profile === "" ? DefaultProfile : Profile } 
+              width={50} 
+              height={50} 
+              alt='Profile Pic' 
+            />
+        <h3 style={{ color: 'cyan' }}>{Name}</h3>
               <p>{Message}</p>
             </span>
           ))

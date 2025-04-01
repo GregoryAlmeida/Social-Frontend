@@ -91,9 +91,10 @@ export const GET_POSTAGENS = async() => {
   return response as Posts[]
 }
 
-export const POST_POSTAGENS = async(username: string, message: string) => {
+export const POST_POSTAGENS = async(username: string, message: string, Profile: string) => {
   await axios.post(`${API_POSTAGENS}postar`, {
     Name: username,
     Message: message,
+    Profile: Profile,
   })
 }
