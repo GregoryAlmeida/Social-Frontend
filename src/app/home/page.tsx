@@ -2,14 +2,12 @@
 import { getCookies } from '@/actions/getCookies';
 import { useContext, useEffect, useState } from 'react';
 import styles from './home.module.css';
-import Image from 'next/image';
-import LOGO from '../../../public/logo-sgo.jpg';
 import { GET_USER_BY_ID, POST_POSTAGENS, User } from '@/api/api_user';
-import Link from 'next/link';
 import Input from '@/components/Input/Input';
 import Postagens from '@/components/Postagens/Postagens';
 import { Context } from '@/components/Context/Context';
-import { Logout } from '@/actions/Logout';
+import Header from '@/components/Header/Header';
+import RandomLoading from '@/components/RandomLoading/RandomLoading';
 
 export default function HomePage() {
   const [userData, setUserData] = useState<User | null>(null);
@@ -53,20 +51,10 @@ export default function HomePage() {
   return (
     <main className={styles.main}>
       {userData === null ? (
-        <h1>Carregando...</h1>
+        <div style={{minHeight: '80vh', display: 'flex'}}><RandomLoading /></div>
       ) : (
         <>
-          <header className={styles.header}>
-            <div>
-              <Image src={LOGO} width={50} height={50} alt="LOGO" />
-            </div>
-            <div>
-              <Link href="/conta">
-                <button>{userData.Name}</button>
-              </Link>
-              <button onClick={Logout}>Logout</button>
-            </div>
-          </header>
+        <Header name={userData.Name} />
           <section className={styles.section}>
             <h1>Bem vindo {userData.Name}</h1>
             <div className={styles.post}>

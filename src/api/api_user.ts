@@ -71,6 +71,20 @@ export const GET_USER_BY_ID = async(id: string) => {
   }
 }
 
+//Atualizar Dados Cadastrais
+export const UPDATE_USER_DATA = async(id: string, user: User) => {
+  const response = await axios.post(`${API_USER}atualizarDados/${id}`, {
+    Id: user.Id,
+    Name: user.Name,
+    Email: user.Email,
+    Password: user.Password,
+    Profile: user.Profile,
+    About: user.About,
+  })
+
+  return response.data
+}
+
 //API POST
 export const GET_POSTAGENS = async() => {
   const response = (await axios.get(API_POSTAGENS)).data
