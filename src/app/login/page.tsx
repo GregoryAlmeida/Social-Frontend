@@ -4,21 +4,23 @@ import Link from 'next/link';
 import style from './login.module.css';
 import { FormEvent, useState } from 'react';
 import { USER_LOGIN } from '@/api/api_user';
+import RandomLoading from '@/components/RandomLoading/RandomLoading';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const handleClick = async (e: FormEvent) => {
     e.preventDefault();
     if (email.trim() === '' || password.trim() === '') {
+      setLoading(true)
       setErr('Preencha os campos corretamente!');
       return;
     }
     try {
-      const response = await USER_LOGIN(email, password);
-      console.log(response);
+      await USER_LOGIN(email, password);
       setErr('Usuário ou Senha Incorretos!');
     } catch (err) {
       console.log(err);
@@ -49,6 +51,7 @@ export default function LoginPage() {
           Não possui conta ainda? Clique <Link href="/cadastrar">Aqui!</Link>{' '}
           para cadastrar!
         </p>
+        {loading && <RandomLoading />}
       </form>
     </main>
   );

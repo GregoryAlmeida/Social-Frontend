@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from './cadastrar.module.css';
 import { FormEvent, useState } from 'react';
 import { GET_USER_BY_EMAIL, USER_CADASTRO } from '@/api/api_user';
+import RandomLoading from '@/components/RandomLoading/RandomLoading';
 
 export default function CadastrarPage() {
   const [username, setUsername] = useState('');
@@ -11,6 +12,7 @@ export default function CadastrarPage() {
   const [password, setPassword] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [err, setErr] = useState('');
+  const [loading, setLoading] = useState(false)
 
   const handleClick = async (e: FormEvent) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function CadastrarPage() {
 
     try {
       const response = await GET_USER_BY_EMAIL(email);
+      setLoading(true)
       if (response) {
         await USER_CADASTRO(crypto.randomUUID(), username, email, password);
         setErr('');
@@ -81,6 +84,7 @@ export default function CadastrarPage() {
           Já possui conta? Clique <Link href="/login">Aqui!</Link> para acessar
           sua conta!
         </p>
+        {loading && <RandomLoading />}
       </form>
     </main>
   );

@@ -9,6 +9,7 @@ import Header from "@/components/Header/Header"
 import RandomLoading from "@/components/RandomLoading/RandomLoading"
 import Input from "@/components/Input/Input"
 
+
 export default function ContaPage() {
     const [user, setUser] = useState<User | null>(null)
     const [display, setDisplay] = useState('none')
