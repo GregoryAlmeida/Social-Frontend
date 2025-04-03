@@ -22,6 +22,7 @@ export default function LoginPage() {
     try {
       await USER_LOGIN(email, password);
       setErr('Usuário ou Senha Incorretos!');
+      setLoading(false)
     } catch (err) {
       console.log(err);
     }

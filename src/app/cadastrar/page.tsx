@@ -30,15 +30,17 @@ export default function CadastrarPage() {
       setErr('As senhas não conferem!');
       return;
     }
+    setLoading(true)
+
 
     try {
       const response = await GET_USER_BY_EMAIL(email);
-      setLoading(true)
       if (response) {
         await USER_CADASTRO(crypto.randomUUID(), username, email, password);
         setErr('');
       } else {
         setErr('Email já existe!');
+        setLoading(false)
         return;
       }
     } catch (err) {
